@@ -62,7 +62,6 @@ library(readr)
 library(RColorBrewer)
 library(rJava)
 library(Rcpp)
-library(raster)
 library(rgdal)
 library(geojsonio)
 ```
@@ -71,3 +70,10 @@ library(geojsonio)
 
 
 # R maps
+library(sf)
+library(dplyr)
+library(tidyverse)
+
+chinamap <- read_sf(dsn = '.', layer = "GridsDP24512")
+beijingmap <- chinamap %>% filter(E_NAME == "Beijing")
+beijingdata <- beijingmap %>% dplyr::select(PCL_ID,POP_DENSIT,Y_HOUSINGP,AMENITIES,JUNCTION,POI_DENSIT)
