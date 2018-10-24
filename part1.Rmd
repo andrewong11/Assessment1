@@ -1,0 +1,73 @@
+---
+title: "AssessmentPart1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r Adam's Practical}
+library(tidyverse)
+library(geojsonio)
+library(sf)
+library(tmap)
+library(tmaptools)
+#read some data attributes
+LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv", na = "n/a")
+#read some geometries
+EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
+#pull out London
+LondonMap <- EW[grep("^E09",EW@data$lad15cd),]
+#convert to a simple features object
+LondonMapSF <- st_as_sf(LondonMap)
+#append the data to the geometries
+LondonMapSF <- append_data(LondonMapSF,LondonData, key.shp = "lad15cd", key.data = "New code", ignore.duplicates = TRUE)
+#plot a choropleth
+qtm(LondonMapSF, fill = "% Not Born in UK - 2011")
+```
+
+#### Start of assessment
+
+```{r Libraries}
+library(tidyverse)
+library(dplyr)
+library(maptools)
+library(sp)
+library(sf)
+library(tmap)
+library(reshape2)
+library(ggplot2)
+library(readr)
+library(RColorBrewer)
+library(rJava)
+library(Rcpp)
+library(raster)
+library(rgdal)
+library(geojsonio)
+```
+
+# GUI maps
+
+
+# R maps
