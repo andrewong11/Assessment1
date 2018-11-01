@@ -1,39 +1,38 @@
 ---
 title: "Assessment Part 1"
-output: 
+author: "Andrew Wong Weng Seng, UCL MSc SCUA"
+output:
   html_notebook:
     theme: cerulean
+  html_document:
+    df_print: paged
   word_document: default
-
-author: Andrew Wong Weng Seng
-bibliography:
-  Assessment1references.bib
+bibliography: Assessment1references.bib
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r global options, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ```{r pressure, echo=FALSE}
 plot(pressure)
 ```
 
-## Assessment Part 1 {.tabset}
+## Spatial correlation between female literacy and proportion of households with electricity in Afghanistan? {.tabset}
 
 ### Written Evaluation 
 
-Word count: 600
+Word count: 597
 
-This research selected 2015 sub-region data from Afghanistan, reported by the Department of Health Surveys (Spatial Data Repository, n.d.). With this data, the spotlight was shone on the potential spatial correlation between female literacy and household access to electricity, which is considered a measure of modernisation and development (Desai, 2012). QGIS and R were used to explore, visualize and compare the female literacy rates and household access to electricity, across sub-regions in Afghanistan. It is critical to remind readers that this study does not intend to prove causation but is solely intended to visualize a potential spatial correlation. 
+This research analysed 2015 sub-region data from Afghanistan, reported by the Department of Health Surveys [@spatial_data_repository_2015_nodate]. With this data, the spotlight was shone on the potential spatial correlation between female literacy and household access to electricity, which can be a measure of modernisation and development [@desai_urbanisation_2012]. QGIS and R were used to explore, visualize and compare the female literacy rates and household access to electricity, across sub-regions in Afghanistan. It is critical to remind readers that this study does not intend to prove statistical causation but is solely intended to visualize a potential spatial correlation. 
 
-This study began by using QGIS to read shapefiles downloaded from the Spatial Data Repository. However, there were many variables/fields with incomplete data. These fields include the maternal mortality rates and HIV-prevalence indicators. Missing values were indicated by ‘9999’. Since the fields of interest (female literacy: ‘EDLITRWLIT’, household electricity: ‘HCELECHELC’) were complete, no interpolations were required to fill in missing data. Following the data inspection, 2 identical maps were placed in the workspace to produce a choropleth map visualising two variables. To ensure that the map clearly portrays the correlation in question, the sub-regions with less than 50% of households with electricity were highlighted through rule-based graduated symbology. Bins of observations were created with the Jenks natural breaks classification. Transparencies and symbols were adjusted and the QGIS map was generated, with appropriate map elements. Finally, the map was embedded into Rmarkdown (Dennett, 2018a).
+The study began by using QGIS to read shapefiles downloaded from the Spatial Data Repository. However, there were many fields with incomplete data. These fields include the maternal mortality rates and HIV-prevalence indicators and missing values were indicated by ‘9999’. Since the fields of interest (female literacy: ‘EDLITRWLIT’, household electricity: ‘HCELECHELC’) were complete, no interpolations were required to fill in missing data. Following the data inspection, 2 identical maps were used to produce a choropleth map visualising two variables. To ensure that the map portrayed the correlation in question, the sub-regions with less than 50% of households with electricity were highlighted through rule-based graduated symbology. Bins of observations were created with jenks natural breaks classification. Transparencies and symbols were adjusted and the QGIS map was generated, with appropriate map elements. Finally, the map was embedded into Rmarkdown [@dennett_producing_2018].
 
-The initial R attempt to produce the map utilised the ‘tmap’ R-package. However, the end-product was considered to be unsatisfactory on aesthetic and intuitive levels. Making fine adjustments required an in-depth knowledge of the extensive R-package documentation. After consulting with peers and an appreciation of the ‘leaflet’ package through Dennett (2018b), a second attempt was made to maximise the potential of the ‘leaflet’ package. Bins of observations were determined by calculating quantiles instead of jenks, and other map elements were added to produce a more comprehensive and intuitive map. This created an interactive map with pop-up labels and multiple overlays by using the ‘addLayersControl’ function (“Leaflet for R - Show/Hide Layers,” n.d.). This allows the user to select the variable to be visualised, to zoom-in, and to choose the type of basemap (ESRI gray canvas / topographic map). 
+The initial R attempt to produce the map utilised the ‘tmap’ R-package. However, the end-product was considered to be unsatisfactory on an aesthetic level, and could have been more intuitive. Making fine adjustments required an in-depth knowledge of the extensive R-package documentation. After consulting with peers and the ‘leaflet’ practical package by Dennett [-@dennett_practical_2018], a second attempt was made to maximise the potential of the ‘leaflet’ package. Bins of observations were determined by calculating quantiles instead of jenks, and other map elements were added to produce a more comprehensive and intuitive map. This created an interactive map with pop-up labels and multiple overlays by using the ‘addLayersControl’ function [@noauthor_leaflet_nodate]. This allows the user to select the variable to be visualised, to zoom-in, and to choose the type of basemap (ESRI gray canvas / topographic map). 
 
-With the maps complete, it is crucial to evaluate the limitations and uncertainty of the data used. Although we do not have the data collection methodology, we can speculate that one probable limitation is the geo-political situation within Afghanistan which could lead to the under-reporting of female literacy rates, as well as compromise the accuracy because of security risks in data collection. These uncertainties should be considered in further analysis.
+With the maps displayed in the above tabs, it is now crucial to evaluate the limitations of the data used. Although we do not have the data collection methodology, we can speculate that one probable limitation is the geo-political situation within Afghanistan which could lead to the under-reporting of female literacy rates. The accuracy of data collection might also be compromised by security challenges. These uncertainties should be factored in further analysis.
 
-The process of using two different approaches to produce a map researching the same question has brought a keener understanding of the benefits and drawbacks of each approach. The ever-necessary process of cleaning, processing and analysing data is significantly easier with R-packages. However, minute adjustments in producing a map are easier in QGIS because of the intuitive and friendly user-interface, which ensures a smooth navigation and provides immediate updates with each change. For R, the smallest of changes require the cartographer to be aware of the intricate R documentation for each function within each package, before needing to run chunks of code again. This can be a time-consuming endeavour, albeit becoming more intuitive with experience and practice. Overall, there are advantages and disadvantages with each platform, but these serve to emphasise their complementarity. The choice of program should depend on the structure of the data, the cartographer’s task, experience and preference. 
-
+The process of using two different approaches to produce a map researching the same question has illuminated the benefits and drawbacks of each approach. The essential process of cleaning, processing and analysing data is significantly easier with R-packages. Furthermore, R is much better at handling large datasets than GIS software. However, minute adjustments in producing a map are easier in QGIS because of the intuitive and friendly user-interface, which ensures a smooth navigation and provides immediate updates with each change. For R, the smallest of changes requires the cartographer to be aware of and edit the intricate R-documentation for each function within each package, before re-running chunks of code. This can be a time-consuming endeavour, albeit becoming more intuitive with experience and practice. Overall, there are advantages and disadvantages with each platform, but these serve to emphasise their complementarity. The choice of program ultimately depends on the structure of the data, the cartographer’s task, experience and preference. 
 
 ### QGIS Map
 
@@ -98,7 +97,7 @@ tm_shape(afghan_lowelec) +
 
 ### R Leaflet Map
 
-```{r Generation of map with Leaflet, echo=TRUE}
+```{r, echo=TRUE}
 ##### Plotting with LEAFLET #####
 library(leaflet)
 afghanmapSP <- afghanmap %>%
@@ -124,7 +123,7 @@ pal1 <- colorBin(palette = "Greys",
                  bins = breaks1,
                  reverse = TRUE)
 
-leaflet() %>%
+leafletmap <- leaflet(width = "100%") %>%
   addPolygons(data = afghanmapSP, 
               stroke = FALSE,
               fillOpacity = 0.8,
@@ -138,10 +137,12 @@ leaflet() %>%
             pal = pal,
             values = ~EDLITRWLIT,
             title = "Female Literacy rates (%)",
-            opacity = 1,
+            opacity = 1.0,
             group = "Female Literacy rates") %>%
+  addScaleBar(position = c("bottomleft"),
+              options = scaleBarOptions(maxWidth = 200, metric = TRUE, updateWhenIdle = TRUE)) %>%
   addProviderTiles("Esri.WorldGrayCanvas", group = "Light basemap") %>%
-  addProviderTiles("Esri.WorldTopoMap", group = "Topo basemap") %>%
+  addProviderTiles("Esri.WorldTopoMap", group = "Topograph basemap") %>%
   addPolygons(data = afghan_lowelecSP,
               stroke = TRUE,
               color = "black",
@@ -157,12 +158,15 @@ leaflet() %>%
             pal = pal1,
             values = ~HCELECHELC,
             title = "Sub-regions with <50% Households with electricity",
-            opacity = 1,
+            opacity = 1.0,
             group = "Sub-regions with <50% Households with electricity") %>%
   addLayersControl(
-    baseGroups = c("Light basemap", "Topo basemap"),
+    baseGroups = c("Light basemap", "Topograph basemap"),
     overlayGroups = c("Female Literacy rates","Sub-regions with <50% Households with electricity"),
-    options = layersControlOptions(collapsed = FALSE)
+    position = c("topleft"),
+    options = layersControlOptions(collapsed = TRUE, autoZIndex = TRUE)
   )
+leafletmap
 ```
 
+### Bibliography
