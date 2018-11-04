@@ -14,10 +14,6 @@ bibliography: Assessment1references.bib
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
 ## Spatial correlation between female literacy and proportion of households with electricity in Afghanistan? {.tabset}
 
 ### Written Evaluation 
@@ -42,7 +38,7 @@ knitr::include_graphics('afghan_latest.jpg')
 ```
 
 ```{r R-generation of Map, include=FALSE}
-library(plotly)
+
 library(maptools)
 library(RColorBrewer)
 library(classInt)
