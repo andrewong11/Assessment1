@@ -93,7 +93,7 @@ tm_shape(afghan_lowelec) +
 
 ### R Leaflet Map
 
-```{r, echo=TRUE}
+```{r, echo=FALSE}
 ##### Plotting with LEAFLET #####
 library(leaflet)
 afghanmapSP <- afghanmap %>%
