@@ -13,14 +13,6 @@ bibliography:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
 ## Assessment written evaluation ##
 This research selected 2015 sub-region data from Afghanistan, reported by the Department of Health Surveys (Spatial Data Repository, n.d.). With this data, the spotlight was shone on the potential spatial correlation between female literacy and household access to electricity, which is considered a measure of modernisation and development (Desai, 2012). QGIS and R were used to explore, visualize and compare the female literacy rates and household access to electricity, across sub-regions in Afghanistan. It is critical to remind readers that this study does not intend to prove causation but is solely intended to visualize a potential spatial correlation. 
 This study began by using QGIS to read shapefiles downloaded from the Spatial Data Repository. However, there were many variables/fields with incomplete data. These fields include the maternal mortality rates and HIV-prevalence indicators. Missing values were indicated by ‘9999’. Since the fields of interest (female literacy: ‘EDLITRWLIT’, household electricity: ‘HCELECHELC’) were complete, no interpolations were required to fill in missing data. Following the data inspection, 2 identical maps were placed in the workspace to produce a choropleth map visualising two variables. To ensure that the map clearly portrays the correlation in question, the sub-regions with less than 50% of households with electricity were highlighted through rule-based graduated symbology. Bins of observations were created with the Jenks natural breaks classification. Transparencies and symbols were adjusted and the QGIS map was generated, with appropriate map elements. Finally, the map was embedded into Rmarkdown (Dennett, 2018a).
